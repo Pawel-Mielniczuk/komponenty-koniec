@@ -5,21 +5,27 @@
  */
 package komponenty;
 
-/**
- *
- * @author Paweł Mielniczuk, Cezary Wątor
- */
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
+
+/**
+ * ColorSlider jest główną klasą naszego komponentu, na bazie której możemy stworzyć,
+ * a także zmodyfikować nasz Color Picker
+ * 
+ * @author Paweł Mielniczuk, Cezary Wątor
+ */
 public class ColorSlider extends JFrame {
     JSlider redSlider, greenSlider, blueSlider;
     JLabel redLable, greenLable, blueLable;
     JPanel colorPanel, sliders, labels;
 
+    /**
+     * Konstruktor klasy ColorSlider
+     */
     public ColorSlider() {
         redSlider = new JSlider(JSlider.HORIZONTAL, 0, 255, 0);
         greenSlider = new JSlider(JSlider.HORIZONTAL, 0, 255, 0);
@@ -72,9 +78,17 @@ public class ColorSlider extends JFrame {
         labels.add(blueLable);
 
     }
-
+    /**
+     * Klasa zapewniająca obsługę eventów dla sliderow
+     */
     public class event implements ChangeListener {
         @Override
+        /**
+         * <p>Metoda pobiera wartość slidera i ustawia tło, w wybranym kolorze,
+         * w formacie RGB</p>
+         * @param event
+         * 
+         */
         public void stateChanged(ChangeEvent e) {
             int redValue = redSlider.getValue();
             int greenValue = greenSlider.getValue();
@@ -96,4 +110,6 @@ public class ColorSlider extends JFrame {
         gui.setSize(500,200);
     }
 }
+
+
 
